@@ -52,6 +52,7 @@ namespace System.Windows.Controls
         #endregion
 
         #region Constructor Members
+
         public ContextMenu()
         {
             base.DefaultStyleKey = typeof(ContextMenu);

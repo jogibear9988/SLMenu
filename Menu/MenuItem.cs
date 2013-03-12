@@ -599,7 +599,10 @@ namespace System.Windows.Controls
             }
             else
             {
-                Point p = this.TransformFromRootVisual();
+                GeneralTransform gt = TransformToVisual(Application.Current.RootVisual);
+                Point p = gt.Transform(new Point(0, 0));
+
+                //Point p = this.TransformFromRootVisual();
                 double width = double.IsNaN(Width) ? ActualWidth : Width;
                 double height = double.IsNaN(Height) ? ActualHeight : Height;
                 double absoluteX = p.X + width;
@@ -638,8 +641,19 @@ namespace System.Windows.Controls
                         Y = absoluteY;
                         break;
                 }
-                _Popup.HorizontalOffset = X; //- p.X;
-                _Popup.VerticalOffset = Y - height * (ParentMenuItem.Items.IndexOf(this.Item ?? this) + 1);// -p.Y;
+                //_Popup.HorizontalOffset = X; //- p.X;
+                //_Popup.VerticalOffset = Y - height * (ParentMenuItem.Items.IndexOf(this.Item ?? this) + 1);// -p.Y;
+
+                if (System.Environment.Version.Major == 5)
+                {
+                    _Popup.HorizontalOffset = X - p.X;
+                    // _popup.VerticalOffset = Y - height * (ParentMenuItem.Items.IndexOf(this.Item ?? this) + 1) - p.Y;
+                }
+                else
+                {
+                    _Popup.HorizontalOffset = X; // -p.X;
+                    _Popup.VerticalOffset = Y - height * (this.ParentMenuItem.Items.IndexOf(this.Item ?? this) + 1); // - p.Y;
+                }
             }
         }
 
