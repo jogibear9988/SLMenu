@@ -42,8 +42,8 @@
                 <menu:MenuItem Header="Undo"/>
                 <menu:MenuItem Header="Redo"/>
                 <menu:MenuItem Header="Cut"/>
-                <menu:MenuItem Header="Copy"/>
-                <menu:MenuItem Header="Paste"/>
+                <menu:MenuItem Header="Copy" />
+                <menu:MenuItem Header="Paste" Icon="paste.png"/>
                 <menu:MenuItem Header="Delete"/>
                 <menu:MenuItem Header="Select All"/>
                 <menu:MenuItem Header="Find and Replace">
@@ -110,6 +110,21 @@
                 <menu:MenuItem Header="Index Results"/>
                 <menu:MenuItem Header="MSDN Forums"/>
                 <menu:MenuItem Header="Report a Bug"/>
+                <menu:MenuItem Header="Window">
+                    <menu:MenuItem Header="New Window"/>
+                    <menu:MenuItem Header="Split"/>
+                    <menu:MenuItem Header="Windows..."/>
+                    <menu:MenuItem Header="Window">
+                        <menu:MenuItem Header="New Window"/>
+                        <menu:MenuItem Header="Split"/>
+                        <menu:MenuItem Header="Windows..."/>
+                        <menu:MenuItem Header="Window">
+                            <menu:MenuItem Header="New Window"/>
+                            <menu:MenuItem Header="Split"/>
+                            <menu:MenuItem Header="Windows..."/>
+                        </menu:MenuItem>
+                    </menu:MenuItem>
+                </menu:MenuItem>
             </menu:MenuItem>
         </menu:Menu>
         
