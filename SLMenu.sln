@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLMenu", "SLMenu\SLMenu.csproj", "{1638D949-4572-4477-BBF7-AF015730663C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "Menu\Menu.csproj", "{B8A616CB-D311-41FD-B98A-202316495DEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1638D949-4572-4477-BBF7-AF015730663C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1638D949-4572-4477-BBF7-AF015730663C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1638D949-4572-4477-BBF7-AF015730663C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1638D949-4572-4477-BBF7-AF015730663C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A616CB-D311-41FD-B98A-202316495DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A616CB-D311-41FD-B98A-202316495DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A616CB-D311-41FD-B98A-202316495DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A616CB-D311-41FD-B98A-202316495DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

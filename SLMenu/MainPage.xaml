@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="SL3Menu.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:menu="clr-namespace:System.Windows.Controls;assembly=Menu"
+    xmlns:toolkit="clr-namespace:System.Windows;assembly=System.Windows.Controls"
+    Width="400" Height="300">
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--Menu that creates all items in xaml-->
+        <menu:Menu x:Name="MainMenu1" Grid.Row="0" Background="AliceBlue" SelectionChanged="MainMenu1_SelectionChanged">
+            <menu:MenuItem Header="File">
+                <menu:MenuItem Header="New">
+                    <menu:MenuItem Header="Project..."/>
+                    <menu:MenuItem Header="Web Site..."/>
+                    <menu:MenuItem Header="File..."/>
+                    <menu:MenuItem Header="Project From Existing Code..."/>
+                </menu:MenuItem>
+                <menu:MenuItem Header="Open">
+                    <menu:MenuItem Header="Project/Solution..."/>
+                    <menu:MenuItem Header="Web Site..."/>
+                    <menu:MenuItem Header="File..."/>
+                    <menu:MenuItem Header="Convert..."/>
+                </menu:MenuItem>
+                <menu:MenuItem Header="Add">
+                    <menu:MenuItem Header="New Project..."/>
+                    <menu:MenuItem Header="New Web Site..."/>
+                    <menu:MenuItem Header="New Distributed System Diagram..."/>
+                    <menu:MenuItem Header="Existing Project..."/>
+                    <menu:MenuItem Header="Existing Web Site..."/>                    
+                </menu:MenuItem>
+                <menu:MenuItem Header="Close"/>
+                <menu:MenuItem Header="Close Solution"/>
+                <menu:MenuItem Header="Save All"/>
+                <menu:MenuItem Header="Export Template..."/>
+                <menu:MenuItem Header="Print"/>
+                <menu:MenuItem Header="Exit"/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Edit">
+                <menu:MenuItem Header="Undo"/>
+                <menu:MenuItem Header="Redo"/>
+                <menu:MenuItem Header="Cut"/>
+                <menu:MenuItem Header="Copy"/>
+                <menu:MenuItem Header="Paste"/>
+                <menu:MenuItem Header="Delete"/>
+                <menu:MenuItem Header="Select All"/>
+                <menu:MenuItem Header="Find and Replace">
+                    <menu:MenuItem Header="Quick Find"/>
+                    <menu:MenuItem Header="Quick Replace"/>
+                    <menu:MenuItem Header="Find in Files"/>
+                    <menu:MenuItem Header="Replace in Files"/>
+                    <menu:MenuItem Header="Find Symbol"/>
+                </menu:MenuItem>
+            </menu:MenuItem>
+            <menu:MenuItem Header="View">
+                <menu:MenuItem Header="Code"/>
+                <menu:MenuItem Header="Designer"/>
+                <menu:MenuItem Header="Server Explorer"/>
+                <menu:MenuItem Header="Solution Explorer"/>
+                <menu:MenuItem Header="Class View"/>
+                <menu:MenuItem Header="Code Definition Window"/>
+                <menu:MenuItem Header="Object Browser"/>
+                <menu:MenuItem Header="Error List"/>
+                <menu:MenuItem Header="Output"/>
+                <menu:MenuItem Header="Properties Window"/>
+                <menu:MenuItem Header="Task List"/>
+                <menu:MenuItem Header="Toolbox"/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Project">
+                <menu:MenuItem Header="Add Class"/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Build">
+                <menu:MenuItem Header="Build Solution"/>
+                <menu:MenuItem Header="Rebuild Solution"/>
+                <menu:MenuItem Header="Clear Solution"/>                
+            </menu:MenuItem>
+            <menu:MenuItem Header="Debug">
+                <menu:MenuItem Header="Start Debugging"/>
+                <menu:MenuItem Header="Start Without Debugging"/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Data">
+                <menu:MenuItem Header="Show Data Source"/>
+                <menu:MenuItem Header="Add New Data Source..."/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Tools">
+                <menu:MenuItem Header="Create GUID"/>
+                <menu:MenuItem Header="Options..."/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Test">
+                <menu:MenuItem Header="New Test..."/>
+                <menu:MenuItem Header="Create New Test List..."/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Analyze">
+                <menu:MenuItem Header="Lanuch Proformance Wizard..."/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Window">
+                <menu:MenuItem Header="New Window"/>
+                <menu:MenuItem Header="Split"/>
+                <menu:MenuItem Header="Windows..."/>
+            </menu:MenuItem>
+            <menu:MenuItem Header="Help">
+                <menu:MenuItem Header="How Do I"/>
+                <menu:MenuItem Header="Search"/>
+                <menu:MenuItem Header="Contents"/>
+                <menu:MenuItem Header="Index"/>
+                <menu:MenuItem Header="Help Favorites"/>
+                <menu:MenuItem Header="Dynmic Help"/>
+                <menu:MenuItem Header="Index Results"/>
+                <menu:MenuItem Header="MSDN Forums"/>
+                <menu:MenuItem Header="Report a Bug"/>
+            </menu:MenuItem>
+        </menu:Menu>
+        
+        <!--Menu that uses DataBinding to create items-->
+        <menu:Menu x:Name="MainMenu2" Grid.Row="1" Background="AntiqueWhite" SelectionChanged="MainMenu2_SelectionChanged">
+            <menu:Menu.ItemTemplate>
+                <toolkit:HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                    <TextBlock Text="{Binding Content}"/>
+                </toolkit:HierarchicalDataTemplate>
+            </menu:Menu.ItemTemplate>
+        </menu:Menu>
+    </Grid>
+</UserControl>

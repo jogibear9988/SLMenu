@@ -1,0 +1,307 @@
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/client/2007"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+  xmlns:controls="clr-namespace:System.Windows.Controls"
+  xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+  >
+    <!--Style for ContextMenu-->
+    <Style TargetType="controls:ContextMenu">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#f8f0f0f0" Offset="0.0"/>
+                    <GradientStop Color="#f8f8f8f8" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#f8a0a0a0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ContextMenu">
+                    <Popup x:Name="Popup" IsOpen="False">
+                        <Border CornerRadius="4" x:Name="HostRoot" Width="200"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.Effect>
+                                <DropShadowEffect/>
+                            </Border.Effect>
+                            <Grid>
+                                <Rectangle Margin="2 2 2 4" Width="30" VerticalAlignment="Stretch"
+                                               HorizontalAlignment="Left">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Color="#f8f4f3fc" Offset="0.0"/>
+                                            <GradientStop Color="#f8d4d8e6" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <Rectangle Margin="32 2 2 4" Width="1" VerticalAlignment="Stretch" 
+                                               HorizontalAlignment="Left">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="#f8a0a0b4"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <ItemsPresenter Margin="0 0 2 2"/>
+                            </Grid>
+                        </Border>
+                    </Popup>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Style for MenuItem-->
+    <Style TargetType="controls:MenuItem">
+        <Setter Property="Margin" Value="0 1"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:MenuItem">
+                    <Grid x:Name="LayoutRoot" Background="Transparent">
+                        <vsm:VisualStateManager.VisualStateGroups>
+                            <vsm:VisualStateGroup x:Name="CommonStates">
+                                <vsm:VisualState x:Name="Normal"/>
+                                <vsm:VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="ElementHover"
+                                          Storyboard.TargetProperty="Visibility"
+                                          Duration="0">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="Pressed"/>
+                                <vsm:VisualState x:Name="Disable">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="ElementContent"
+                                          Storyboard.TargetProperty="IsEnable"
+                                          Duration="0">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="False" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                            <vsm:VisualStateGroup x:Name="CheckStates">
+                                <vsm:VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="CheckIcon"
+                                          Storyboard.TargetProperty="Visibility"
+                                          Duration="0">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="UnChecked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="CheckIcon"
+                                          Storyboard.TargetProperty="Visibility"
+                                          Duration="0">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                            <vsm:VisualStateGroup x:Name="HasItemsStates">
+                                <vsm:VisualState x:Name="HasItems">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="ElementChildren"
+                                          Storyboard.TargetProperty="Visibility"
+                                          Duration="0">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="NoItems">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="ElementChildren"
+                                          Storyboard.TargetProperty="Visibility"
+                                          Duration="0">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                        </vsm:VisualStateManager.VisualStateGroups>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle x:Name="ElementHover" Grid.Column="0" Grid.ColumnSpan="3"
+                                   Margin="2 0" RadiusX="4" RadiusY="4" Visibility="Collapsed"
+                                   Stroke="#ff96d9f9" StrokeThickness="1">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#aaf1f8fb" Offset="0.0"/>
+                                    <GradientStop Color="#aabae4f6" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Image x:Name="ElementIcon" Grid.Column="0" Margin="4 0 0 0"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Ellipse x:Name="CheckIcon" Grid.Column="0" Margin="4 0 0 0"
+                                 Width="7" Height="7"  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush GradientOrigin="0.7, 0.3">
+                                    <GradientStop Offset="0" Color="White"/>
+                                    <GradientStop Offset="0.9" Color="Black"/>
+                                    <GradientStop Offset="1" Color="Black"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <ContentControl x:Name="ElementContent" Grid.Column="1" Margin="6 0 0 0"
+                                          HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Polygon x:Name="ElementChildren" Grid.Column="2" Points="0,0 4,4 0,8" Fill="Black"
+                                 HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                        <Popup x:Name="Popup" IsOpen="False">
+                            <Border CornerRadius="4" MinWidth="200" x:Name="ItemsHost" BorderBrush="#f8a0a0a0" BorderThickness="1">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#f8f0f0f0" Offset="0.0"/>
+                                        <GradientStop Color="#f8f8f8f8" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Grid>
+                                    <Rectangle Margin="2 2 2 4" Width="30" VerticalAlignment="Stretch"
+                                               HorizontalAlignment="Left">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                <GradientStop Color="#f8f4f3fc" Offset="0.0"/>
+                                                <GradientStop Color="#f8d4d8e6" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <Rectangle Margin="32 2 2 4" Width="1" VerticalAlignment="Stretch" 
+                                               HorizontalAlignment="Left">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="#f8a0a0b4"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <ItemsPresenter Margin="0 0 2 2"/>
+                                </Grid>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Style for Menu-->
+    <Style TargetType="controls:Menu">
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="controls:MenuItem">
+                    <Setter Property="Padding" Value="5 0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="controls:MenuItem">
+                                <Grid x:Name="LayoutRoot" Background="Transparent">
+                                    <vsm:VisualStateManager.VisualStateGroups>
+                                        <vsm:VisualStateGroup x:Name="CommonStates">
+                                            <vsm:VisualState x:Name="Normal"/>
+                                            <vsm:VisualState x:Name="MouseOver">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="ElementHover"
+                                          Storyboard.TargetProperty="Visibility"
+                                          Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </vsm:VisualState>
+                                            <vsm:VisualState x:Name="Pressed"/>
+                                            <vsm:VisualState x:Name="Disable">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="ElementContent"
+                                          Storyboard.TargetProperty="IsEnable"
+                                          Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="False" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </vsm:VisualState>
+                                        </vsm:VisualStateGroup>                                    
+                                    </vsm:VisualStateManager.VisualStateGroups>
+                                    <Rectangle x:Name="ElementHover" 
+                                   Visibility="Collapsed"
+                                   Stroke="#ff96d9f9" StrokeThickness="1">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="#aaf1f8fb" Offset="0.0"/>
+                                                <GradientStop Color="#aabae4f6" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <ContentControl x:Name="ElementContent" Grid.Column="1"
+                                                      Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Popup x:Name="Popup" IsOpen="False">
+                                        <Border x:Name="ItemsHost" MinWidth="200" CornerRadius="4"  BorderBrush="#f8a0a0a0" BorderThickness="1">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                    <GradientStop Color="#f8f0f0f0" Offset="0.0"/>
+                                                    <GradientStop Color="#f8f8f8f8" Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Border.Effect>
+                                                <DropShadowEffect/>
+                                            </Border.Effect>
+                                            <Grid>
+                                                <Rectangle Margin="2 2 2 4" Width="30" VerticalAlignment="Stretch"
+                                               HorizontalAlignment="Left">
+                                                    <Rectangle.Fill>
+                                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                            <GradientStop Color="#f8f4f3fc" Offset="0.0"/>
+                                                            <GradientStop Color="#f8d4d8e6" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <Rectangle Margin="32 2 2 4" Width="1" VerticalAlignment="Stretch" 
+                                               HorizontalAlignment="Left">
+                                                    <Rectangle.Fill>
+                                                        <SolidColorBrush Color="#f8a0a0b4"/>
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+                                                <ItemsPresenter Margin="0 0 2 2"/>
+                                            </Grid>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <toolkit:WrapPanel/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:Menu">
+                    <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                        <ItemsPresenter/>
+                        <Popup x:Name="Popup" IsOpen="True"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
