@@ -159,7 +159,7 @@
                             </Ellipse.Fill>
                         </Ellipse>
 
-                        <ContentControl x:Name="ElementContent" Grid.Column="1" Margin="6 0 0 0"
+                        <ContentControl x:Name="ElementContent" Grid.Column="1" Margin="6 0 0 0" Foreground="{TemplateBinding Foreground}"
                                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <Polygon x:Name="ElementChildren" Grid.Column="2" Points="0,0 4,4 0,8" Fill="Black"
                                  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
@@ -223,7 +223,16 @@
                                                     </ObjectAnimationUsingKeyFrames>
                                                 </Storyboard>
                                             </vsm:VisualState>
-                                            <vsm:VisualState x:Name="Pressed"/>
+                                            <vsm:VisualState x:Name="SubMenuOpend">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames
+                                          Storyboard.TargetName="ElementHover"
+                                          Storyboard.TargetProperty="Visibility"
+                                          Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </vsm:VisualState>
                                             <vsm:VisualState x:Name="Disable">
                                                 <Storyboard>
                                                     <ObjectAnimationUsingKeyFrames
@@ -246,7 +255,7 @@
                                             </LinearGradientBrush>
                                         </Rectangle.Fill>
                                     </Rectangle>
-                                    <ContentControl x:Name="ElementContent" Grid.Column="1"
+                                    <ContentControl x:Name="ElementContent" Grid.Column="1" Foreground="{TemplateBinding Foreground}"
                                                       Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <Popup x:Name="Popup" IsOpen="False">

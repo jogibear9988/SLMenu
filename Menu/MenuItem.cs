@@ -412,6 +412,7 @@ namespace System.Windows.Controls
         private const string HasItemsState = "HasItems";
         private const string NoItemsState = "NoItems";
         private const string NormalState = "Normal";
+        private const string SubMenuOpendState = "SubMenuOpend";
         internal virtual void ChangeVisualState(string state)
         {
             if (HasItems)
@@ -426,6 +427,9 @@ namespace System.Windows.Controls
                 VisualStateManager.GoToState(this, NormalState, true);
             else
                 VisualStateManager.GoToState(this, MouseOverState, true);
+
+            if (!HasItems && state == SubMenuOpendState)
+                 VisualStateManager.GoToState(this, SubMenuOpendState, true);            
         }
         #endregion
 
@@ -579,6 +583,8 @@ namespace System.Windows.Controls
         private IDictionary<object, DependencyObject> m_ItemsCache;
         protected virtual void OpenSubMenu()
         {
+            ChangeVisualState(SubMenuOpendState);
+
             if (HasItems)
             {
                 IsSubMenuOpen = true;
