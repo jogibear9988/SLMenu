@@ -107,33 +107,36 @@ namespace System.Windows.Controls
 
         private void ArrangePopup()
         {
-            if (_ElementOutsidePopup != null)
+            if (!System.ComponentModel.DesignerProperties.IsInDesignTool)
             {
-                double wholeWidth = Application.Current.Host.Content.ActualWidth;
-                double wholeHeight = Application.Current.Host.Content.ActualHeight;
-                double actualHeight = this.ActualHeight;
-                double actualWidth = this.ActualWidth;
-                Point p = this.TransformFromRootVisual();
+                if (_ElementOutsidePopup != null)
+                {
+                    double wholeWidth = Application.Current.Host.Content.ActualWidth;
+                    double wholeHeight = Application.Current.Host.Content.ActualHeight;
+                    double actualHeight = this.ActualHeight;
+                    double actualWidth = this.ActualWidth;
+                    Point p = this.TransformFromRootVisual();
 
-                _TopCanvas.Width = wholeWidth;
-                _TopCanvas.Height = p.Y;
-                Canvas.SetLeft(_TopCanvas, -p.X);
-                Canvas.SetTop(_TopCanvas, -p.Y);
+                    _TopCanvas.Width = wholeWidth;
+                    _TopCanvas.Height = p.Y;
+                    Canvas.SetLeft(_TopCanvas, -p.X);
+                    Canvas.SetTop(_TopCanvas, -p.Y);
 
-                _LeftCanvas.Width = p.X;
-                _LeftCanvas.Height = actualHeight;
-                Canvas.SetLeft(_LeftCanvas, -p.X);
-                Canvas.SetTop(_LeftCanvas, 0);
+                    _LeftCanvas.Width = p.X;
+                    _LeftCanvas.Height = actualHeight;
+                    Canvas.SetLeft(_LeftCanvas, -p.X);
+                    Canvas.SetTop(_LeftCanvas, 0);
 
-                _RightCanvas.Width = Math.Max(wholeWidth - p.X - actualWidth, 0);
-                _RightCanvas.Height = actualHeight;
-                Canvas.SetLeft(_RightCanvas, actualWidth);
-                Canvas.SetTop(_RightCanvas, 0);
+                    _RightCanvas.Width = Math.Max(wholeWidth - p.X - actualWidth, 0);
+                    _RightCanvas.Height = actualHeight;
+                    Canvas.SetLeft(_RightCanvas, actualWidth);
+                    Canvas.SetTop(_RightCanvas, 0);
 
-                _BottomCanvas.Width = wholeWidth;
-                _BottomCanvas.Height = Math.Max(wholeHeight - p.Y - actualHeight, 0);
-                Canvas.SetLeft(_BottomCanvas, -p.X);
-                Canvas.SetTop(_BottomCanvas, actualHeight);
+                    _BottomCanvas.Width = wholeWidth;
+                    _BottomCanvas.Height = Math.Max(wholeHeight - p.Y - actualHeight, 0);
+                    Canvas.SetLeft(_BottomCanvas, -p.X);
+                    Canvas.SetTop(_BottomCanvas, actualHeight);
+                }
             }
         }
         #endregion
