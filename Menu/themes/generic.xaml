@@ -202,7 +202,7 @@
 
     <!--Style for Menu-->
     <Style TargetType="controls:Menu">
-        <Setter Property="ItemContainerStyle">
+        <!--<Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="controls:MenuItem">
                     <Setter Property="Padding" Value="5 0"/>
@@ -295,7 +295,7 @@
                     </Setter>
                 </Style>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="ItemsPanel">
