@@ -314,7 +314,16 @@ namespace System.Windows.Controls
             }
         }
         #endregion
+        
+        public bool IsSeperator
+        {
+            get { return (bool)GetValue(IsSeperatorProperty); }
+            set { SetValue(IsSeperatorProperty, value); }
+        }
 
+        public static readonly DependencyProperty IsSeperatorProperty =
+            DependencyProperty.Register("IsSeperator", typeof(bool), typeof(MenuItem), new PropertyMetadata(false));
+        
         #region ItemsControl Members
         /// <summary>
         /// Creates a new MenuItem to use to display the object.

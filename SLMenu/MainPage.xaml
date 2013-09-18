@@ -32,6 +32,7 @@
                     <menu:MenuItem Header="Existing Web Site..."/>                    
                 </menu:MenuItem>
                 <menu:MenuItem Header="Close"/>
+                <menu:MenuItem IsSeperator="True"/>
                 <menu:MenuItem Header="Close Solution"/>
                 <menu:MenuItem Header="Save All"/>
                 <menu:MenuItem Header="Export Template..."/>

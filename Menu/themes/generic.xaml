@@ -5,6 +5,10 @@
   xmlns:controls="clr-namespace:System.Windows.Controls"
   xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
   >
+    <controls:BooleanToVisibileConverter x:Key="TrueVisibleConverter" TrueValue="Visible" FalseValue="Collapsed" />
+
+    <controls:BooleanToVisibileConverter x:Key="FalseVisibleConverter" TrueValue="Collapsed" FalseValue="Visible" />
+    
     <!--Style for ContextMenu-->
     <Style TargetType="controls:ContextMenu">
         <Setter Property="Background">
@@ -56,10 +60,10 @@
     <!--Style for MenuItem-->
     <Style TargetType="controls:MenuItem">
         <Setter Property="Margin" Value="0 1"/>
-        <Setter Property="Height" Value="20"/>
+        <!--<Setter Property="Height" Value="20"/>-->
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:MenuItem">
+                <ControlTemplate TargetType="controls:MenuItem">                    
                     <Grid x:Name="LayoutRoot" Background="Transparent">
                         <vsm:VisualStateManager.VisualStateGroups>
                             <vsm:VisualStateGroup x:Name="CommonStates">
@@ -131,6 +135,7 @@
                                 </vsm:VisualState>
                             </vsm:VisualStateGroup>
                         </vsm:VisualStateManager.VisualStateGroups>
+                        <Grid Height="20" Visibility="{Binding IsSeperator, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource FalseVisibleConverter}}" > 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="*"/>
@@ -194,6 +199,8 @@
                                 </Grid>
                             </Border>
                         </Popup>
+                        </Grid>
+                        <Rectangle Visibility="{Binding IsSeperator, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TrueVisibleConverter}}" Grid.Column="0" Grid.ColumnSpan="3" Margin="35,0,5,0" Height="1" Fill="DimGray" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
