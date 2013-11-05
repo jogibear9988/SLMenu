@@ -424,7 +424,7 @@ namespace System.Windows.Controls
         private const string SubMenuOpendState = "SubMenuOpend";
         internal virtual void ChangeVisualState(string state)
         {
-            if (HasItems)
+            if (HasItems && this.ParentMenuItem != null)
                 VisualStateManager.GoToState(this, HasItemsState, true);
             else
                 VisualStateManager.GoToState(this, NoItemsState, true);
